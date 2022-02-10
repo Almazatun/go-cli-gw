@@ -25,5 +25,5 @@ $ ./go-cli-gw get -all
 # Get by platform name
 $ ./go-cli-gw get -plm test
 # Add pass
-$ ./go-cli-gw add -des "bla" -email "bla" -password "bla" -platform "bla" -username "bla"
+$ ./go-cli-gw add -email=bla -password=bla -username=bla -platform=bla -des=bla
 ```
