@@ -1,4 +1,4 @@
-# CLI command
+# 💧 CLI command
 
 ## Installation
 ```bash
