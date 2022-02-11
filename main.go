@@ -12,6 +12,7 @@ func main() {
 	getCMD := flag.NewFlagSet("get", flag.ExitOnError)
 	getAll := getCMD.Bool("all", false, "Get all pass that you saved")
 	getByPlatform := getCMD.String("plm", "", "Platform name where you register")
+	getByCharacters := getCMD.String("pcr", "", "Get platform by special characters")
 
 	// add cmd
 	addCMD := flag.NewFlagSet("add", flag.ExitOnError)
@@ -28,9 +29,8 @@ func main() {
 
 	switch os.Args[1] {
 	case "get":
-		HandleGet(getCMD, getAll, getByPlatform)
+		HandleGet(getCMD, getAll, getByPlatform, getByCharacters)
 	case "add":
-		addCMD.Parse(os.Args[2:])
 		HandleAdd(addCMD, addEmail, addPassword, addUsername, addPlatform, addDesc)
 	default:
 		fmt.Println("<>|<>")

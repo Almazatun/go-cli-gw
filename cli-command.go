@@ -4,15 +4,16 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/Almazatun/go-cli-gw/util"
 )
 
-func HandleGet(getCMD *flag.FlagSet, all *bool, platformName *string) {
+func HandleGet(getCMD *flag.FlagSet, all *bool, platformName *string, characters *string) {
 	getCMD.Parse(os.Args[2:])
 
-	if *all == false && *platformName == "" {
-		fmt.Print("platformName is required or specify -all for all pass list")
+	if *all == false && *platformName == "" && *characters == "" {
+		fmt.Print("platformName is required or specify -all for all pass list \n")
 		getCMD.PrintDefaults()
 		os.Exit(1)
 	}
@@ -36,9 +37,22 @@ func HandleGet(getCMD *flag.FlagSet, all *bool, platformName *string) {
 			}
 		}
 	}
+
+	if *characters != "" {
+		passList := getPass()
+
+		fmt.Printf("Email \t Username \t Username \t Platform \t Description \n")
+		for _, passData := range passList {
+			if strings.ContainsAny(passData.Platform, *characters) {
+				fmt.Printf("%v \t %v \t %v \t %v \t %v \n", passData.Email, passData.Password, passData.Username, passData.Platform, passData.Description)
+			}
+		}
+	}
 }
 
 func HandleAdd(addCMD *flag.FlagSet, email *string, password *string, username *string, platform *string, desc *string) {
+
+	addCMD.Parse(os.Args[2:])
 
 	util.ValidatePassInputData(addCMD, email, password, username, platform, desc)
 
