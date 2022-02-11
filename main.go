@@ -11,8 +11,8 @@ func main() {
 	// get cmd
 	getCMD := flag.NewFlagSet("get", flag.ExitOnError)
 	getAll := getCMD.Bool("all", false, "Get all pass that you saved")
-	getByPlatform := getCMD.String("plm", "", "Platform name where you register")
-	getByCharacters := getCMD.String("pcr", "", "Get platform by special characters")
+	getByPlatform := getCMD.String("plm", "", "Get pass by platform name where you register")
+	getByCharacters := getCMD.String("pcr", "", "Get pass list by special characters")
 
 	// add cmd
 	addCMD := flag.NewFlagSet("add", flag.ExitOnError)
