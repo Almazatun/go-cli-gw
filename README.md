@@ -23,7 +23,9 @@ $ go build
 # All
 $ ./go-cli-gw get -all
 # Get by platform name
-$ ./go-cli-gw get -plm test
+$ ./go-cli-gw get -plm=<FULL_PLATFORM_NAME>
+# Get platform by special characters
+$ ./go-cli-gw get -pcr=<SPECIAL_CHARACTERS>
 # Add pass
 $ ./go-cli-gw add -email=bla -password=bla -username=bla -platform=bla -des=bla
 ```
